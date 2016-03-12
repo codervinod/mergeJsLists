@@ -11,6 +11,7 @@ function mergeLists(l1, l2) {
 	while(s < max_iter && b < max_iter) {
 		if(smallList[s] < bigList[b]) {
 			bigList.splice(b, 0, smallList[s]);
+			b++;
 			s++;
 		} else {
 			b++;
@@ -30,7 +31,7 @@ function main() {
 	var l1 = [1,3,5,7,98,99,100];
 	var l2 = [2,4,6,32,33,102,103,110,111,112,115,119];
 
-	var mergedList = mergeLists(l1, l2);
+	var mergedList = mergeLists(l2, l1);
 
 	console.log('l1=', l1);
 	console.log('l2=', l2);
