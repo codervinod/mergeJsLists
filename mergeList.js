@@ -15,8 +15,13 @@ function mergeLists(l1, l2) {
 		}
 	}
 
-	mergeList.push.apply(mergeList, l1.slice(i));
-	mergeList.push.apply(mergeList, l2.slice(j));
+	if(i < l1.length) {
+		mergeList.push.apply(mergeList, l1.slice(i));	
+	}
+
+	if(j < l2.length) {
+		mergeList.push.apply(mergeList, l2.slice(j));
+	}
 
 	return mergeList;
 }
