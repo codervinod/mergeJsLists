@@ -2,39 +2,33 @@
 /* Merge two sorted javascript array and return sorted array */
 
 function mergeLists(l1, l2) {
-	
-	var max_iter = (l1.length > l2.length )? l1.length:l2.length;
-	var smallList = (l1.length > l2.length )? l2:l1;
-	var bigList = (l2.length > l1.length )? l2:l1;
-	var s=0, b=0;
-	var totalIter = 0;
-	while(s < max_iter && b < max_iter) {
-		if(smallList[s] < bigList[b]) {
-			bigList.splice(b, 0, smallList[s]);
-			b++;
-			s++;
-		} else {
-			b++;
-		}
 
-		if(s > smallList.length) {
-			break;
+	var i=0;
+	var j=0;
+	var k=0;
+	var mergeList = [];
+
+	while (i < l1.length && j < l2.length) {
+		if(l1[i] < l2[j]) {
+			mergeList[k++] = l1[i++]
+		} else {
+			mergeList[k++] = l2[j++]
 		}
-		++totalIter;
 	}
-	console.log("total iterations=", totalIter);
-	return bigList;
+
+	mergeList.push.apply(mergeList, l1.slice(i));
+	mergeList.push.apply(mergeList, l2.slice(j));
+
+	return mergeList;
 }
 
 function main() {
 
-	var l1 = [1,3,5,7,98,99,100];
-	var l2 = [2,4,6,32,33,102,103,110,111,112,115,119];
-
-	var mergedList = mergeLists(l2, l1);
-
+	var l1 = [1,2,3,9,10,13]; 
+	var l2 = [4,5,6,7,8,99]; 
 	console.log('l1=', l1);
 	console.log('l2=', l2);
+	var mergedList = mergeLists(l2, l1);
 	console.log('mergedList=', mergedList);
 }
 
